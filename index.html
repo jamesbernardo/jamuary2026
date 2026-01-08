@@ -1,0 +1,930 @@
+<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamuary 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+            padding-bottom: 100px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        h1 .jamuary {
+            background: linear-gradient(135deg, #ff6b35, #f7c59f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .progress-bar {
+            margin-top: 30px;
+            background: #1a1a1a;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #f7c59f);
+            width: 29%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .lucky-dip-btn {
+            margin-top: 24px;
+            background: linear-gradient(135deg, #ff6b35, #e85a24);
+            border: none;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .lucky-dip-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .lucky-dip-btn:active {
+            transform: translateY(0);
+        }
+
+        .lucky-dip-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .lucky-dip-btn.spinning svg {
+            animation: spin 0.5s ease-out;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .tracks {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .track {
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .track:hover {
+            background: #161616;
+        }
+
+        .track.active {
+            background: #1a1a1a;
+        }
+
+        .track.now-playing {
+            border-left: 3px solid #ff6b35;
+        }
+
+        .track.highlight {
+            animation: highlightPulse 0.6s ease-out;
+        }
+
+        @keyframes highlightPulse {
+            0% { background: #ff6b35; }
+            100% { background: #1a1a1a; }
+        }
+
+        .track-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .day-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: #444;
+            width: 32px;
+            flex-shrink: 0;
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #222;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .play-btn:hover {
+            background: #ff6b35;
+            transform: scale(1.05);
+        }
+
+        .play-btn svg {
+            fill: #fff;
+            width: 14px;
+            height: 14px;
+            margin-left: 2px;
+        }
+
+        .play-btn.playing svg {
+            margin-left: 0;
+        }
+
+        .track-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .track-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-meta {
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .track-duration {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: #444;
+            flex-shrink: 0;
+        }
+
+        .track-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .track.active .track-details {
+            max-height: 400px;
+        }
+
+        .track-details-inner {
+            padding: 0 20px 20px 88px;
+        }
+
+        .track-notes {
+            font-size: 0.85rem;
+            color: #777;
+            font-weight: 300;
+        }
+
+        .waveform-container {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #222;
+        }
+
+        .waveform {
+            height: 60px;
+            background: #0d0d0d;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            padding: 0 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .waveform-bar {
+            width: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: background 0.1s;
+        }
+
+        .waveform-bar.played {
+            background: #ff6b35;
+        }
+
+        .waveform-bar.active {
+            background: #f7c59f;
+        }
+
+        .hidden-audio {
+            display: none;
+        }
+
+        /* Now Playing Bar */
+        .now-playing-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            border-top: 1px solid #222;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .now-playing-bar.visible {
+            transform: translateY(0);
+        }
+
+        .np-play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ff6b35;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .np-play-btn:hover {
+            transform: scale(1.05);
+            background: #ff8555;
+        }
+
+        .np-play-btn svg {
+            fill: #fff;
+            width: 18px;
+            height: 18px;
+            margin-left: 2px;
+        }
+
+        .np-play-btn.playing svg {
+            margin-left: 0;
+        }
+
+        .np-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .np-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .np-day {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .np-waveform {
+            flex-grow: 2;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+        }
+
+        .np-waveform-bar {
+            width: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: background 0.1s;
+        }
+
+        .np-waveform-bar.played {
+            background: #ff6b35;
+        }
+
+        .np-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: #666;
+            flex-shrink: 0;
+            min-width: 90px;
+            text-align: right;
+        }
+
+        .np-close {
+            background: none;
+            border: none;
+            color: #444;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .np-close:hover {
+            color: #888;
+        }
+
+        .np-close svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: #444;
+        }
+
+        footer a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ff6b35;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .track-details-inner {
+                padding-left: 20px;
+            }
+
+            .np-waveform {
+                display: none;
+            }
+
+            .now-playing-bar {
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="jamuary">Jamuary</span> 2026</h1>
+            <p class="subtitle">A track a day, all through January</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="progress-text">9 of 31 days complete</p>
+            
+            <button class="lucky-dip-btn" onclick="luckyDip()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                Lucky Dip
+            </button>
+        </header>
+
+        <div class="tracks" id="tracks">
+            <!-- Day 9 -->
+            <div class="track" data-day="09" data-title="holocene" data-date="Thu, Jan 9" data-src="090126-holocene.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">09</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">holocene</div>
+                        <div class="track-meta">Thu, Jan 9</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 8 -->
+            <div class="track" data-day="08" data-title="smooth" data-date="Wed, Jan 8" data-src="080126-smooth.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">08</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">smooth</div>
+                        <div class="track-meta">Wed, Jan 8</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="track" data-day="07" data-title="opn" data-date="Tue, Jan 7" data-src="070126-opn.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">07</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">opn</div>
+                        <div class="track-meta">Tue, Jan 7</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="track" data-day="06" data-title="forest" data-date="Mon, Jan 6" data-src="060126-forest.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">06</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">forest</div>
+                        <div class="track-meta">Mon, Jan 6</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="track" data-day="05" data-title="freddie" data-date="Sun, Jan 5" data-src="050126-freddie.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">05</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">freddie</div>
+                        <div class="track-meta">Sun, Jan 5</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="track" data-day="04" data-title="wetindie" data-date="Sat, Jan 4" data-src="040126-wetindie.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">04</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">wetindie</div>
+                        <div class="track-meta">Sat, Jan 4</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="track" data-day="03" data-title="innocentdwarf" data-date="Fri, Jan 3" data-src="030126-innocentdwarf.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">03</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">innocentdwarf</div>
+                        <div class="track-meta">Fri, Jan 3</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="track" data-day="02" data-title="headnod" data-date="Thu, Jan 2" data-src="020126-headnod.mp3" data-duration="--:--">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">02</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">headnod</div>
+                        <div class="track-meta">Thu, Jan 2</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 1 -->
+            <div class="track" data-day="01" data-title="we look like we are flying" data-date="Wed, Jan 1" data-src="010126-welooklikeweareflying.mp3" data-duration="2:08">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">01</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">we look like we are flying</div>
+                        <div class="track-meta">Wed, Jan 1</div>
+                    </div>
+                    <span class="track-duration">2:08</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes">First day of Jamuary!</p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with Ableton Live · <a href="#">About this project</a></p>
+        </footer>
+    </div>
+
+    <!-- Now Playing Bar -->
+    <div class="now-playing-bar" id="nowPlayingBar">
+        <button class="np-play-btn" id="npPlayBtn" onclick="togglePlayPause()">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+        </button>
+        <div class="np-info">
+            <div class="np-title" id="npTitle">Track Title</div>
+            <div class="np-day" id="npDay">Day 01</div>
+        </div>
+        <div class="np-waveform" id="npWaveform" onclick="seekFromNowPlaying(event)"></div>
+        <div class="np-time">
+            <span id="npCurrentTime">0:00</span> / <span id="npDuration">0:00</span>
+        </div>
+        <button class="np-close" onclick="closeNowPlaying()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Hidden audio element -->
+    <audio id="mainAudio"></audio>
+
+    <script>
+        const audio = document.getElementById('mainAudio');
+        const nowPlayingBar = document.getElementById('nowPlayingBar');
+        const npPlayBtn = document.getElementById('npPlayBtn');
+        const npTitle = document.getElementById('npTitle');
+        const npDay = document.getElementById('npDay');
+        const npWaveform = document.getElementById('npWaveform');
+        const npCurrentTime = document.getElementById('npCurrentTime');
+        const npDuration = document.getElementById('npDuration');
+        
+        let currentTrack = null;
+        let waveformBars = [];
+        let npWaveformBars = [];
+
+        // Generate random waveform data for visual effect
+        function generateWaveform(container, barCount = 80) {
+            container.innerHTML = '';
+            const bars = [];
+            for (let i = 0; i < barCount; i++) {
+                const bar = document.createElement('div');
+                const height = Math.random() * 40 + 10;
+                bar.className = container.classList.contains('np-waveform') ? 'np-waveform-bar' : 'waveform-bar';
+                bar.style.height = height + 'px';
+                container.appendChild(bar);
+                bars.push(bar);
+            }
+            return bars;
+        }
+
+        // Initialize waveforms for all tracks
+        document.querySelectorAll('.waveform').forEach(waveform => {
+            generateWaveform(waveform, 80);
+        });
+
+        // Generate now playing waveform
+        npWaveformBars = generateWaveform(npWaveform, 60);
+
+        function toggleTrack(header) {
+            const track = header.parentElement;
+            const wasActive = track.classList.contains('active');
+            
+            document.querySelectorAll('.track').forEach(t => {
+                t.classList.remove('active');
+            });
+            
+            if (!wasActive) {
+                track.classList.add('active');
+            }
+        }
+
+        function playTrack(trackElement) {
+            const src = trackElement.dataset.src;
+            const title = trackElement.dataset.title;
+            const day = trackElement.dataset.day;
+            const date = trackElement.dataset.date;
+
+            // Check if track has audio source
+            if (!src) {
+                console.log('No audio source for this track yet');
+                return;
+            }
+
+            // Remove now-playing class from all tracks
+            document.querySelectorAll('.track').forEach(t => t.classList.remove('now-playing'));
+            
+            // If clicking the same track that's playing, toggle play/pause
+            if (currentTrack === trackElement && !audio.paused) {
+                audio.pause();
+                updatePlayButtons(false);
+                return;
+            }
+
+            currentTrack = trackElement;
+            trackElement.classList.add('now-playing');
+            trackElement.classList.add('active');
+
+            // Update now playing bar
+            npTitle.textContent = title;
+            npDay.textContent = `Day ${day} · ${date}`;
+            nowPlayingBar.classList.add('visible');
+
+            // Load and play audio
+            audio.src = src;
+            audio.play().catch(e => {
+                console.log('Playback failed:', e);
+            });
+
+            updatePlayButtons(true);
+            
+            // Store reference to track's waveform bars
+            waveformBars = trackElement.querySelectorAll('.waveform-bar');
+        }
+
+        function luckyDip() {
+            const allTracks = document.querySelectorAll('.track');
+            const tracksWithAudio = Array.from(allTracks).filter(t => t.dataset.src);
+            
+            if (tracksWithAudio.length === 0) {
+                console.log('No tracks with audio available');
+                return;
+            }
+            
+            const btn = document.querySelector('.lucky-dip-btn');
+            
+            // Add spin animation
+            btn.classList.add('spinning');
+            setTimeout(() => btn.classList.remove('spinning'), 500);
+            
+            // Pick a random track (different from current if possible)
+            let randomIndex;
+            if (tracksWithAudio.length > 1 && currentTrack) {
+                do {
+                    randomIndex = Math.floor(Math.random() * tracksWithAudio.length);
+                } while (tracksWithAudio[randomIndex] === currentTrack);
+            } else {
+                randomIndex = Math.floor(Math.random() * tracksWithAudio.length);
+            }
+            
+            const randomTrack = tracksWithAudio[randomIndex];
+            
+            // Scroll to the track
+            randomTrack.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Add highlight effect
+            randomTrack.classList.add('highlight');
+            setTimeout(() => randomTrack.classList.remove('highlight'), 600);
+            
+            // Play the track after a short delay
+            setTimeout(() => {
+                playTrack(randomTrack);
+            }, 300);
+        }
+
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+                updatePlayButtons(true);
+            } else {
+                audio.pause();
+                updatePlayButtons(false);
+            }
+        }
+
+        function updatePlayButtons(isPlaying) {
+            const playIcon = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+            const pauseIcon = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+
+            // Update now playing bar button
+            npPlayBtn.innerHTML = isPlaying ? pauseIcon : playIcon;
+            npPlayBtn.classList.toggle('playing', isPlaying);
+
+            // Update track play buttons
+            document.querySelectorAll('.track .play-btn').forEach(btn => {
+                const track = btn.closest('.track');
+                if (track === currentTrack) {
+                    btn.innerHTML = isPlaying ? pauseIcon : playIcon;
+                    btn.classList.toggle('playing', isPlaying);
+                } else {
+                    btn.innerHTML = playIcon;
+                    btn.classList.remove('playing');
+                }
+            });
+        }
+
+        function closeNowPlaying() {
+            audio.pause();
+            audio.currentTime = 0;
+            nowPlayingBar.classList.remove('visible');
+            document.querySelectorAll('.track').forEach(t => t.classList.remove('now-playing'));
+            updatePlayButtons(false);
+            currentTrack = null;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function updateWaveformProgress(progress) {
+            // Update track waveform
+            waveformBars.forEach((bar, index) => {
+                const barProgress = index / waveformBars.length;
+                bar.classList.toggle('played', barProgress < progress);
+            });
+
+            // Update now playing waveform
+            npWaveformBars.forEach((bar, index) => {
+                const barProgress = index / npWaveformBars.length;
+                bar.classList.toggle('played', barProgress < progress);
+            });
+        }
+
+        function seekTrack(event, waveformElement) {
+            if (!audio.duration) return;
+            const rect = waveformElement.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const progress = x / rect.width;
+            audio.currentTime = progress * audio.duration;
+        }
+
+        function seekFromNowPlaying(event) {
+            if (!audio.duration) return;
+            const rect = npWaveform.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const progress = x / rect.width;
+            audio.currentTime = progress * audio.duration;
+        }
+
+        // Audio event listeners
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progress = audio.currentTime / audio.duration;
+                npCurrentTime.textContent = formatTime(audio.currentTime);
+                updateWaveformProgress(progress);
+            }
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            npDuration.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('ended', () => {
+            updatePlayButtons(false);
+            updateWaveformProgress(0);
+        });
+
+        audio.addEventListener('play', () => updatePlayButtons(true));
+        audio.addEventListener('pause', () => updatePlayButtons(false));
+    </script>
+
+</body></html>
