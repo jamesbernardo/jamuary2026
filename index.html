@@ -398,6 +398,92 @@
             height: 20px;
         }
 
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup {
+            background: linear-gradient(135deg, #1a1a1a, #111);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 40px 50px;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+        }
+
+        .popup-overlay.visible .popup {
+            transform: scale(1);
+        }
+
+        .popup-emoji {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            animation: nodBounce 0.6s ease-out;
+        }
+
+        @keyframes nodBounce {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-5px); }
+        }
+
+        .popup-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ff6b35, #f7c59f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .popup-message {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .popup-close-btn {
+            background: linear-gradient(135deg, #ff6b35, #e85a24);
+            border: none;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .popup-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
         footer {
             margin-top: 60px;
             text-align: center;
@@ -438,6 +524,14 @@
 
             .now-playing-bar {
                 padding: 10px 16px;
+            }
+
+            .popup {
+                padding: 30px 24px;
+            }
+
+            .popup-title {
+                font-size: 1.25rem;
             }
         }
     </style>
@@ -903,6 +997,16 @@
         </button>
     </div>
 
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+        <div class="popup" onclick="event.stopPropagation()">
+            <div class="popup-emoji">🎧</div>
+            <div class="popup-title">Thanks for listening!</div>
+            <div class="popup-message">You get the nod! 🤘</div>
+            <button class="popup-close-btn" onclick="closePopup()">Keep Jamming</button>
+        </div>
+    </div>
+
     <!-- Hidden audio element -->
     <audio id="mainAudio"></audio>
 
@@ -915,10 +1019,15 @@
         const npWaveform = document.getElementById('npWaveform');
         const npCurrentTime = document.getElementById('npCurrentTime');
         const npDuration = document.getElementById('npDuration');
+        const popupOverlay = document.getElementById('popupOverlay');
         
         let currentTrack = null;
         let waveformBars = [];
         let npWaveformBars = [];
+        
+        // Track play count for popup
+        let playedTracks = new Set();
+        let popupShown = false;
 
         // Format time helper
         function formatTime(seconds) {
@@ -991,6 +1100,27 @@
             }
         }
 
+        function showPopup() {
+            if (!popupShown) {
+                popupShown = true;
+                popupOverlay.classList.add('visible');
+            }
+        }
+
+        function closePopup(event) {
+            if (event && event.target !== popupOverlay) return;
+            popupOverlay.classList.remove('visible');
+        }
+
+        function checkPlayCount(trackElement) {
+            const trackDay = trackElement.dataset.day;
+            playedTracks.add(trackDay);
+            
+            if (playedTracks.size >= 3 && !popupShown) {
+                setTimeout(showPopup, 500);
+            }
+        }
+
         function playTrack(trackElement) {
             const src = trackElement.dataset.src;
             const title = trackElement.dataset.title;
@@ -1026,6 +1156,9 @@
             updatePlayButtons(true);
             
             waveformBars = trackElement.querySelectorAll('.waveform-bar');
+            
+            // Check play count for popup
+            checkPlayCount(trackElement);
         }
 
         function luckyDip() {
