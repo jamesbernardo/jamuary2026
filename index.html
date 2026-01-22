@@ -1,8 +1,10 @@
-<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jamuary 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -62,7 +64,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #ff6b35, #f7c59f);
-            width: 29%;
+            width: 58%;
             transition: width 0.5s ease;
         }
 
@@ -448,7 +450,7 @@
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-            <p class="progress-text">9 of 31 days complete</p>
+            <p class="progress-text">18 of 31 days complete</p>
             
             <button class="lucky-dip-btn" onclick="luckyDip()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -460,8 +462,215 @@
         </header>
 
         <div class="tracks" id="tracks">
+            <!-- Day 18 -->
+            <div class="track" data-day="18" data-title="lynchspiration" data-date="Sat, Jan 18" data-src="180126-lynchspiration.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">18</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">lynchspiration</div>
+                        <div class="track-meta">Sat, Jan 18</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 17 -->
+            <div class="track" data-day="17" data-title="vileadjacent" data-date="Fri, Jan 17" data-src="170126-vileadjacent.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">17</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">vileadjacent</div>
+                        <div class="track-meta">Fri, Jan 17</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 16 -->
+            <div class="track" data-day="16" data-title="totape" data-date="Thu, Jan 16" data-src="160126-totape.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">16</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">totape</div>
+                        <div class="track-meta">Thu, Jan 16</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 15 -->
+            <div class="track" data-day="15" data-title="resample" data-date="Wed, Jan 15" data-src="150126-resample.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">15</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">resample</div>
+                        <div class="track-meta">Wed, Jan 15</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 14 -->
+            <div class="track" data-day="14" data-title="fonky" data-date="Tue, Jan 14" data-src="140126-fonky.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">14</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">fonky</div>
+                        <div class="track-meta">Tue, Jan 14</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 13 -->
+            <div class="track" data-day="13" data-title="tweaky" data-date="Mon, Jan 13" data-src="130126-tweaky.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">13</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">tweaky</div>
+                        <div class="track-meta">Mon, Jan 13</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 12 -->
+            <div class="track" data-day="12" data-title="chromahate" data-date="Sun, Jan 12" data-src="120126-chromahate.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">12</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">chromahate</div>
+                        <div class="track-meta">Sun, Jan 12</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11 -->
+            <div class="track" data-day="11" data-title="I don't like this game" data-date="Sat, Jan 11" data-src="110126-I don't like this game.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">11</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">I don't like this game</div>
+                        <div class="track-meta">Sat, Jan 11</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 10 -->
+            <div class="track" data-day="10" data-title="cleohovvdy" data-date="Fri, Jan 10" data-src="100126-cleohovvdy.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">10</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">cleohovvdy</div>
+                        <div class="track-meta">Fri, Jan 10</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Day 9 -->
-            <div class="track" data-day="09" data-title="holocene" data-date="Thu, Jan 9" data-src="090126-holocene.mp3" data-duration="--:--">
+            <div class="track" data-day="09" data-title="holocene" data-date="Thu, Jan 9" data-src="090126-holocene.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">09</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -484,7 +693,7 @@
             </div>
 
             <!-- Day 8 -->
-            <div class="track" data-day="08" data-title="smooth" data-date="Wed, Jan 8" data-src="080126-smooth.mp3" data-duration="--:--">
+            <div class="track" data-day="08" data-title="smooth" data-date="Wed, Jan 8" data-src="080126-smooth.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">08</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -507,7 +716,7 @@
             </div>
 
             <!-- Day 7 -->
-            <div class="track" data-day="07" data-title="opn" data-date="Tue, Jan 7" data-src="070126-opn.mp3" data-duration="--:--">
+            <div class="track" data-day="07" data-title="opn" data-date="Tue, Jan 7" data-src="070126-opn.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">07</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -530,7 +739,7 @@
             </div>
 
             <!-- Day 6 -->
-            <div class="track" data-day="06" data-title="forest" data-date="Mon, Jan 6" data-src="060126-forest.mp3" data-duration="--:--">
+            <div class="track" data-day="06" data-title="forest" data-date="Mon, Jan 6" data-src="060126-forest.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">06</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -553,7 +762,7 @@
             </div>
 
             <!-- Day 5 -->
-            <div class="track" data-day="05" data-title="freddie" data-date="Sun, Jan 5" data-src="050126-freddie.mp3" data-duration="--:--">
+            <div class="track" data-day="05" data-title="freddie" data-date="Sun, Jan 5" data-src="050126-freddie.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">05</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -576,7 +785,7 @@
             </div>
 
             <!-- Day 4 -->
-            <div class="track" data-day="04" data-title="wetindie" data-date="Sat, Jan 4" data-src="040126-wetindie.mp3" data-duration="--:--">
+            <div class="track" data-day="04" data-title="wetindie" data-date="Sat, Jan 4" data-src="040126-wetindie.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">04</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -599,7 +808,7 @@
             </div>
 
             <!-- Day 3 -->
-            <div class="track" data-day="03" data-title="innocentdwarf" data-date="Fri, Jan 3" data-src="030126-innocentdwarf.mp3" data-duration="--:--">
+            <div class="track" data-day="03" data-title="innocentdwarf" data-date="Fri, Jan 3" data-src="030126-innocentdwarf.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">03</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -622,7 +831,7 @@
             </div>
 
             <!-- Day 2 -->
-            <div class="track" data-day="02" data-title="headnod" data-date="Thu, Jan 2" data-src="020126-headnod.mp3" data-duration="--:--">
+            <div class="track" data-day="02" data-title="headnod" data-date="Thu, Jan 2" data-src="020126-headnod.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">02</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -645,7 +854,7 @@
             </div>
 
             <!-- Day 1 -->
-            <div class="track" data-day="01" data-title="we look like we are flying" data-date="Wed, Jan 1" data-src="010126-welooklikeweareflying.mp3" data-duration="2:08">
+            <div class="track" data-day="01" data-title="we look like we are flying" data-date="Wed, Jan 1" data-src="010126-welooklikeweareflying.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">01</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
@@ -655,7 +864,7 @@
                         <div class="track-title">we look like we are flying</div>
                         <div class="track-meta">Wed, Jan 1</div>
                     </div>
-                    <span class="track-duration">2:08</span>
+                    <span class="track-duration">--:--</span>
                 </div>
                 <div class="track-details">
                     <div class="track-details-inner">
@@ -711,6 +920,38 @@
         let waveformBars = [];
         let npWaveformBars = [];
 
+        // Format time helper
+        function formatTime(seconds) {
+            if (isNaN(seconds) || !isFinite(seconds)) return '--:--';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Load durations for all tracks on page load
+        function loadAllDurations() {
+            document.querySelectorAll('.track').forEach(track => {
+                const src = track.dataset.src;
+                if (src) {
+                    const tempAudio = new Audio();
+                    tempAudio.preload = 'metadata';
+                    
+                    tempAudio.addEventListener('loadedmetadata', () => {
+                        const durationEl = track.querySelector('.track-duration');
+                        if (durationEl) {
+                            durationEl.textContent = formatTime(tempAudio.duration);
+                        }
+                    });
+                    
+                    tempAudio.addEventListener('error', () => {
+                        console.log(`Could not load metadata for: ${src}`);
+                    });
+                    
+                    tempAudio.src = src;
+                }
+            });
+        }
+
         // Generate random waveform data for visual effect
         function generateWaveform(container, barCount = 80) {
             container.innerHTML = '';
@@ -734,6 +975,9 @@
         // Generate now playing waveform
         npWaveformBars = generateWaveform(npWaveform, 60);
 
+        // Load all durations when page loads
+        document.addEventListener('DOMContentLoaded', loadAllDurations);
+
         function toggleTrack(header) {
             const track = header.parentElement;
             const wasActive = track.classList.contains('active');
@@ -753,16 +997,13 @@
             const day = trackElement.dataset.day;
             const date = trackElement.dataset.date;
 
-            // Check if track has audio source
             if (!src) {
                 console.log('No audio source for this track yet');
                 return;
             }
 
-            // Remove now-playing class from all tracks
             document.querySelectorAll('.track').forEach(t => t.classList.remove('now-playing'));
             
-            // If clicking the same track that's playing, toggle play/pause
             if (currentTrack === trackElement && !audio.paused) {
                 audio.pause();
                 updatePlayButtons(false);
@@ -773,12 +1014,10 @@
             trackElement.classList.add('now-playing');
             trackElement.classList.add('active');
 
-            // Update now playing bar
             npTitle.textContent = title;
             npDay.textContent = `Day ${day} · ${date}`;
             nowPlayingBar.classList.add('visible');
 
-            // Load and play audio
             audio.src = src;
             audio.play().catch(e => {
                 console.log('Playback failed:', e);
@@ -786,7 +1025,6 @@
 
             updatePlayButtons(true);
             
-            // Store reference to track's waveform bars
             waveformBars = trackElement.querySelectorAll('.waveform-bar');
         }
 
@@ -801,11 +1039,9 @@
             
             const btn = document.querySelector('.lucky-dip-btn');
             
-            // Add spin animation
             btn.classList.add('spinning');
             setTimeout(() => btn.classList.remove('spinning'), 500);
             
-            // Pick a random track (different from current if possible)
             let randomIndex;
             if (tracksWithAudio.length > 1 && currentTrack) {
                 do {
@@ -817,14 +1053,11 @@
             
             const randomTrack = tracksWithAudio[randomIndex];
             
-            // Scroll to the track
             randomTrack.scrollIntoView({ behavior: 'smooth', block: 'center' });
             
-            // Add highlight effect
             randomTrack.classList.add('highlight');
             setTimeout(() => randomTrack.classList.remove('highlight'), 600);
             
-            // Play the track after a short delay
             setTimeout(() => {
                 playTrack(randomTrack);
             }, 300);
@@ -844,11 +1077,9 @@
             const playIcon = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
             const pauseIcon = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
 
-            // Update now playing bar button
             npPlayBtn.innerHTML = isPlaying ? pauseIcon : playIcon;
             npPlayBtn.classList.toggle('playing', isPlaying);
 
-            // Update track play buttons
             document.querySelectorAll('.track .play-btn').forEach(btn => {
                 const track = btn.closest('.track');
                 if (track === currentTrack) {
@@ -870,20 +1101,12 @@
             currentTrack = null;
         }
 
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
-        }
-
         function updateWaveformProgress(progress) {
-            // Update track waveform
             waveformBars.forEach((bar, index) => {
                 const barProgress = index / waveformBars.length;
                 bar.classList.toggle('played', barProgress < progress);
             });
 
-            // Update now playing waveform
             npWaveformBars.forEach((bar, index) => {
                 const barProgress = index / npWaveformBars.length;
                 bar.classList.toggle('played', barProgress < progress);
@@ -906,7 +1129,6 @@
             audio.currentTime = progress * audio.duration;
         }
 
-        // Audio event listeners
         audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
                 const progress = audio.currentTime / audio.duration;
@@ -927,6 +1149,5 @@
         audio.addEventListener('play', () => updatePlayButtons(true));
         audio.addEventListener('pause', () => updatePlayButtons(false));
     </script>
-
-
-</body></html>
+</body>
+</html>
