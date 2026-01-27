@@ -125,7 +125,8 @@
             background: #111;
             border-radius: 8px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease;
+            border-left: 3px solid transparent;
         }
 
         .track:hover {
@@ -137,7 +138,7 @@
         }
 
         .track.now-playing {
-            border-left: 3px solid #ff6b35;
+            border-left-color: #ff6b35;
         }
 
         .track.highlight {
@@ -163,6 +164,11 @@
             color: #444;
             width: 32px;
             flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+
+        .track.now-playing .day-number {
+            color: #ff6b35;
         }
 
         .play-btn {
@@ -175,7 +181,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
+            transition: background 0.2s ease, transform 0.2s ease;
             flex-shrink: 0;
         }
 
@@ -188,11 +194,22 @@
             fill: #fff;
             width: 14px;
             height: 14px;
+        }
+
+        .play-btn .play-icon {
             margin-left: 2px;
         }
 
-        .play-btn.playing svg {
-            margin-left: 0;
+        .play-btn .pause-icon {
+            display: none;
+        }
+
+        .play-btn.playing .play-icon {
+            display: none;
+        }
+
+        .play-btn.playing .pause-icon {
+            display: block;
         }
 
         .track-info {
@@ -324,11 +341,22 @@
             fill: #fff;
             width: 18px;
             height: 18px;
+        }
+
+        .np-play-btn .play-icon {
             margin-left: 2px;
         }
 
-        .np-play-btn.playing svg {
-            margin-left: 0;
+        .np-play-btn .pause-icon {
+            display: none;
+        }
+
+        .np-play-btn.playing .play-icon {
+            display: none;
+        }
+
+        .np-play-btn.playing .pause-icon {
+            display: block;
         }
 
         .np-info {
@@ -561,7 +589,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">26</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">maps</div>
@@ -584,7 +613,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">25</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">smallbutmighty</div>
@@ -607,7 +637,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">24</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">grimaceambient</div>
@@ -630,7 +661,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">23</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">arpsintheoffice</div>
@@ -653,7 +685,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">22</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">budgetferrero</div>
@@ -676,7 +709,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">21</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">1994</div>
@@ -699,7 +733,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">20</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">norfolk</div>
@@ -722,7 +757,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">19</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">heckerlite</div>
@@ -745,7 +781,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">18</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">lynchspiration</div>
@@ -768,7 +805,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">17</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">vileadjacent</div>
@@ -791,7 +829,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">16</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">totape</div>
@@ -814,7 +853,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">15</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">resample</div>
@@ -837,7 +877,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">14</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">fonky</div>
@@ -860,7 +901,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">13</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">tweaky</div>
@@ -883,7 +925,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">12</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">chromahate</div>
@@ -906,7 +949,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">11</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">I don't like this game</div>
@@ -929,7 +973,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">10</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">cleohovvdy</div>
@@ -952,7 +997,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">09</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">holocene</div>
@@ -975,7 +1021,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">08</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">smooth</div>
@@ -998,7 +1045,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">07</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">opn</div>
@@ -1021,7 +1069,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">06</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">forest</div>
@@ -1044,7 +1093,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">05</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">freddie</div>
@@ -1067,7 +1117,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">04</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">wetindie</div>
@@ -1090,7 +1141,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">03</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">innocentdwarf</div>
@@ -1113,7 +1165,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">02</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">headnod</div>
@@ -1136,7 +1189,8 @@
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">01</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                     </button>
                     <div class="track-info">
                         <div class="track-title">we look like we are flying</div>
@@ -1163,7 +1217,8 @@
     <!-- Now Playing Bar -->
     <div class="now-playing-bar" id="nowPlayingBar">
         <button class="np-play-btn" id="npPlayBtn" onclick="togglePlayPause()">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
         </button>
         <div class="np-info">
             <div class="np-title" id="npTitle">Track Title</div>
@@ -1316,13 +1371,15 @@
                 return;
             }
 
-            document.querySelectorAll('.track').forEach(t => t.classList.remove('now-playing'));
-            
+            // If clicking the same track that's playing, toggle pause
             if (currentTrack === trackElement && !audio.paused) {
                 audio.pause();
                 updatePlayButtons(false);
                 return;
             }
+
+            // Remove now-playing from all tracks
+            document.querySelectorAll('.track').forEach(t => t.classList.remove('now-playing'));
 
             currentTrack = trackElement;
             trackElement.classList.add('now-playing');
@@ -1391,19 +1448,15 @@
         }
 
         function updatePlayButtons(isPlaying) {
-            const playIcon = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
-            const pauseIcon = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
-
-            npPlayBtn.innerHTML = isPlaying ? pauseIcon : playIcon;
+            // Update now playing bar button
             npPlayBtn.classList.toggle('playing', isPlaying);
 
+            // Update track buttons
             document.querySelectorAll('.track .play-btn').forEach(btn => {
                 const track = btn.closest('.track');
                 if (track === currentTrack) {
-                    btn.innerHTML = isPlaying ? pauseIcon : playIcon;
                     btn.classList.toggle('playing', isPlaying);
                 } else {
-                    btn.innerHTML = playIcon;
                     btn.classList.remove('playing');
                 }
             });
@@ -1468,3 +1521,4 @@
     </script>
 </body>
 </html>
+
