@@ -64,7 +64,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #ff6b35, #f7c59f);
-            width: 71%;
+            width: 84%;
             transition: width 0.5s ease;
         }
 
@@ -544,7 +544,7 @@
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-            <p class="progress-text">22 of 31 days complete</p>
+            <p class="progress-text">26 of 31 days complete</p>
             
             <button class="lucky-dip-btn" onclick="luckyDip()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -556,8 +556,100 @@
         </header>
 
         <div class="tracks" id="tracks">
+            <!-- Day 26 -->
+            <div class="track" data-day="26" data-title="maps" data-date="Mon, Jan 26" data-src="260126-maps.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">26</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">maps</div>
+                        <div class="track-meta">Mon, Jan 26</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 25 -->
+            <div class="track" data-day="25" data-title="smallbutmighty" data-date="Sun, Jan 25" data-src="250126-smallbutmighty.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">25</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">smallbutmighty</div>
+                        <div class="track-meta">Sun, Jan 25</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 24 -->
+            <div class="track" data-day="24" data-title="grimaceambient" data-date="Sat, Jan 24" data-src="240126-grimaceambient.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">24</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">grimaceambient</div>
+                        <div class="track-meta">Sat, Jan 24</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 23 -->
+            <div class="track" data-day="23" data-title="arpsintheoffice" data-date="Fri, Jan 23" data-src="230126-arpsintheoffice.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">23</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">arpsintheoffice</div>
+                        <div class="track-meta">Fri, Jan 23</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Day 22 -->
-            <div class="track" data-day="22" data-title="budgetferraro" data-date="Thu, Jan 22" data-src="220126-budgetferrero.mp3">
+            <div class="track" data-day="22" data-title="budgetferrero" data-date="Thu, Jan 22" data-src="220126-budgetferrero.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">22</span>
                     <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
