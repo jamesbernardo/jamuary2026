@@ -584,6 +584,54 @@
         </header>
 
         <div class="tracks" id="tracks">
+             <!-- Day 28 -->
+            <div class="track" data-day="28" data-title="303onion" data-date="Wed, Jan 28" data-src="280126-303onion.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">28</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">303onion</div>
+                        <div class="track-meta">Wed, Jan 28</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Day 27 -->
+            <div class="track" data-day="27" data-title="canopenerslidemess" data-date="Tue, Jan 27" data-src="270126-canopenerslidemess.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">27</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">canopenerslidemess</div>
+                        <div class="track-meta">Tue, Jan 27</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Day 26 -->
             <div class="track" data-day="26" data-title="maps" data-date="Mon, Jan 26" data-src="260126-maps.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
