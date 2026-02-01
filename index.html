@@ -64,7 +64,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #ff6b35, #f7c59f);
-            width: 84%;
+            width: 100%;
             transition: width 0.5s ease;
         }
 
@@ -572,7 +572,7 @@
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-            <p class="progress-text">28 of 31 days complete</p>
+            <p class="progress-text">31 of 31 days complete 🎉</p>
             
             <button class="lucky-dip-btn" onclick="luckyDip()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -584,7 +584,79 @@
         </header>
 
         <div class="tracks" id="tracks">
-             <!-- Day 28 -->
+            <!-- Day 31 -->
+            <div class="track" data-day="31" data-title="outro" data-date="Sat, Jan 31" data-src="310126-outro.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">31</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">outro</div>
+                        <div class="track-meta">Sat, Jan 31</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes">The final track! 🎉</p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 30 -->
+            <div class="track" data-day="30" data-title="boombapava" data-date="Fri, Jan 30" data-src="300126-boombapava.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">30</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">boombapava</div>
+                        <div class="track-meta">Fri, Jan 30</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 29 -->
+            <div class="track" data-day="29" data-title="clean&onward" data-date="Thu, Jan 29" data-src="290126-clean&onward.mp3">
+                <div class="track-header" onclick="toggleTrack(this)">
+                    <span class="day-number">29</span>
+                    <button class="play-btn" onclick="event.stopPropagation(); playTrack(this.closest('.track'))">
+                        <svg class="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title">clean&onward</div>
+                        <div class="track-meta">Thu, Jan 29</div>
+                    </div>
+                    <span class="track-duration">--:--</span>
+                </div>
+                <div class="track-details">
+                    <div class="track-details-inner">
+                        <p class="track-notes"></p>
+                        <div class="waveform-container">
+                            <div class="waveform" onclick="seekTrack(event, this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 28 -->
             <div class="track" data-day="28" data-title="303onion" data-date="Wed, Jan 28" data-src="280126-303onion.mp3">
                 <div class="track-header" onclick="toggleTrack(this)">
                     <span class="day-number">28</span>
@@ -1408,6 +1480,35 @@
             }
         }
 
+        // Get all tracks as an array for navigation
+        function getTracksList() {
+            return Array.from(document.querySelectorAll('.track'));
+        }
+
+        // Find the next track in the list (visually below current track)
+        function getNextTrack(currentTrackElement) {
+            const tracks = getTracksList();
+            const currentIndex = tracks.indexOf(currentTrackElement);
+            
+            // Next track is the one below in the list (higher index)
+            if (currentIndex < tracks.length - 1) {
+                return tracks[currentIndex + 1];
+            }
+            
+            // If at the last track, loop back to the first
+            return tracks[0];
+        }
+
+        // Play the next track
+        function playNextTrack() {
+            if (!currentTrack) return;
+            
+            const nextTrack = getNextTrack(currentTrack);
+            if (nextTrack && nextTrack.dataset.src) {
+                playTrack(nextTrack);
+            }
+        }
+
         function playTrack(trackElement) {
             const src = trackElement.dataset.src;
             const title = trackElement.dataset.title;
@@ -1559,9 +1660,11 @@
             npDuration.textContent = formatTime(audio.duration);
         });
 
+        // Autoplay next track when current one ends
         audio.addEventListener('ended', () => {
             updatePlayButtons(false);
             updateWaveformProgress(0);
+            playNextTrack();
         });
 
         audio.addEventListener('play', () => updatePlayButtons(true));
@@ -1569,4 +1672,3 @@
     </script>
 </body>
 </html>
-
